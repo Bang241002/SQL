@@ -1,0 +1,56 @@
+
+--Tạo ĐB--
+CREATE DATABASE BT
+GO
+-- Sử dụng bảng GSTH--
+USE BT
+GO
+
+--Tạo bảng học sinh--
+CREATE TABLE Studennt
+    (
+		name nvarchar(50) 
+		,age varchar(15) 
+		,birthday varchar (15)
+	)
+GO
+--Tao bảng lớp học--
+CREATE TABLE Class
+    (
+		code nvarchar(50) primary key
+		,name nvarchar(100)
+	)
+
+GO
+
+--thêm dữ liệu bảng Studennt
+Insert Into dbo.Studennt(name,age,birthday)
+	values ('bangdc','19','20/2/2012')
+
+-- sửa dữ liệu
+
+UPDATE dbo.Studennt SET age = 20 WHERE name = bangdc
+
+--xóa dữ liệu--
+
+DELETE dbo.Studennt WHERE name = 'bangdc'
+
+
+-- thêm cột-- 
+ALTER TABLE dbo.Studennt
+ADD StudentID varchar(255);
+
+--tạo khóa chính
+ALTER TABLE dbo.Studennt alter column StudentID int NOT NULL
+
+ALTER TABLE dbo.Studennt 
+ADD PRIMARY KEY (StudentID)
+
+--Mã lớp học phải tồn tại--
+ALTER TABLE dbo.Class alter column code int NOT NULL
+
+
+
+--thêm dữ liệu bảng Class--
+Insert Into dbo.Class(code,name)
+	values ('lop12','A11')
